@@ -1,9 +1,16 @@
 import React, { Fragment } from 'react';
-import ApolloClient from 'apollo-boost';
+import ApolloClient, { InMemoryCache } from 'apollo-boost';
 import { ApolloProvider } from '@apollo/react-hooks';
+import Test from './components/Test';
 
+
+const GITHUB_BASE_URL = 'https://api.github.com/graphql';
 const client = new ApolloClient({
-  uri: 'https://48p1r2roz4.sse.codesandbox.io',
+  uri: GITHUB_BASE_URL,
+  cache: new InMemoryCache(),
+  headers: {
+    Authorization: `Bearer ${process.env.REACT_APP_GITHUB_ACCESS_TOKEN}`
+  }
 });
 
 
@@ -12,6 +19,7 @@ function App() {
     <ApolloProvider client={client}>
       <Fragment>
         <h1>Hello, I'm using Apollo Provider!</h1>
+        <Test />
       </Fragment>
     </ApolloProvider>
   );
