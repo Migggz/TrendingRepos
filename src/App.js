@@ -1,27 +1,30 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import ApolloClient, { InMemoryCache } from 'apollo-boost';
 import { ApolloProvider } from '@apollo/react-hooks';
-import Test from './components/Test';
+import Login from './components/Login'
+import { getToken } from './utils';
 
+const AUTH_TOKEN = getToken();
 
-const GITHUB_BASE_URL = 'https://api.github.com/graphql';
-const client = new ApolloClient({
-  uri: GITHUB_BASE_URL,
+const apolloClient = new ApolloClient({
+  uri: process.env.REACT_APP_GITHUB_BASE_URI,
   cache: new InMemoryCache(),
   headers: {
-    Authorization: `Bearer ${process.env.REACT_APP_GITHUB_ACCESS_TOKEN}`
+    Authorization: `Bearer ${AUTH_TOKEN}`
   }
 });
 
 
 function App() {
   return (
-    <ApolloProvider client={client}>
-      <Fragment>
-        <h1>Hello, I'm using Apollo Provider!</h1>
-        <Test />
-      </Fragment>
-    </ApolloProvider>
+    AUTH_TOKEN ?
+      <ApolloProvider client={apolloClient}>
+        <main>
+          <h1>Hello, I'm using Apollo Provider!</h1>
+        </main>
+      </ApolloProvider>
+    :
+    <Login />
   );
 }
 

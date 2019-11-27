@@ -1,0 +1,70 @@
+@import "./normalize";
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
+@keyframes fadeIn{
+  from {
+    opacity: 0;
+  } to {
+    opacity: 1;
+  }
+}
+
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  // outline: 1px solid rgba(#abc, 0.05);
+}
+
+html {
+  font-size: 62.5%;
+  font-size: 10px;
+  overflow-x: hidden;
+}
+
+body {
+  font-size: 1.6rem;
+  line-height: 1.33333;
+  position: relative;
+  overflow-x: hidden;
+  cursor: default;
+  font-family: 'Roboto', sans-serif;
+  font-weight: normal;
+  color: #333;
+  background-color: #F5F5F5;
+  opacity: 0;
+  animation: 0.5s fadeIn ease forwards;
+}
+
+a,
+a:hover,
+a:visited,
+a:link,
+a:active {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+
+// Components
+@import "./Login"
