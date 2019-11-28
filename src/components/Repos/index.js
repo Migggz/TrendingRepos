@@ -1,10 +1,14 @@
 import React from 'react';
 import ApolloClient, { InMemoryCache } from 'apollo-boost';
 import { ApolloProvider } from '@apollo/react-hooks';
-import Header from '../Header';
+import ReposInner from '../ReposInner';
+import TrendRepos from '../TrendRepos'
+import Footer from '../Footer'
 
-function Repos({AUTH_TOKEN}) {
+
+function Repos({AUTH_TOKEN, setUserToken}) {
   
+  // Configure Apollo Client
   const apolloClient = new ApolloClient({
     uri: process.env.REACT_APP_GITHUB_BASE_URI,
     cache: new InMemoryCache(),
@@ -15,9 +19,10 @@ function Repos({AUTH_TOKEN}) {
   
   return (
     <ApolloProvider client={apolloClient}>
-      <main>
-        <Header />
-      </main>
+      <ReposInner setUserToken={setUserToken} className="repos">
+        <TrendRepos />
+        <Footer />
+      </ReposInner>
     </ApolloProvider>
   );
 }
