@@ -65,6 +65,12 @@ button {
   cursor: pointer;
 }
 
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+
 
 // Components
-@import "./_login.sass"
+@import "./_login.sass";
+@import "./_repos.sass";
