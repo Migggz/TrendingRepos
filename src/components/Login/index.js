@@ -17,7 +17,7 @@ function Login({setUserToken}) {
   return (
     <main className="login fadeIn">
       <div className="login-inner">
-        <h1 className="login-title">Trendy Github Repositories</h1>
+        <h1 className="login-title">Trending Github Repositories</h1>
         <p className="login-desc">See all Trending Github Repositories according to stars, date range and more !</p>
         <form className="login-form" onSubmit={submitToken}>
           <span className="login-note">* Personal Access Token required. <a href="https://developer.github.com/v4/guides/forming-calls/#authenticating-with-graphql" rel="noopener noreferrer" target="_blank">Check How To!</a></span>
